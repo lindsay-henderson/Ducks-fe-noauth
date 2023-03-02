@@ -1,14 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect, useNavigate} from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
 import AddContact from './pages/addContact/addContact.js'
+import * as contactService from './services/contactService'
+
 import './App.css'
 
 function App() {
   const [contacts, setContacts] = useState([])
+  const navigate = useNavigate()
 
-  const handleAddContact = newContactData => {
-    setContacts([...contacts, newContactData])
+  const handleAddContact = async newContactData => {
+    const newContact = await contactService.create(newContactData)
+    setContacts([...contacts, newContact])
+    alert('contact added')
+    navigate('/')
   }
+  useEffect(() => {
+    const fetchAllContacts = async () =>{
+      const contactData = await contactService.getAll()
+      setContacts(contactData)
+    }
+    fetchAllContacts()
+  }, [])
+
 
   return (
     <div className="App">
