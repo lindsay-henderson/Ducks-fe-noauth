@@ -6,6 +6,10 @@ import './App.css'
 function App() {
   const [contacts, setContacts] = useState([])
 
+  const handleAddContact = newContactData => {
+    setContacts([...contacts, newContactData])
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +21,7 @@ function App() {
       </header>
 			<main>
 				<Routes>
-          <Route path='/add'  element={<AddContact/>}/>
+          <Route path='/add'  element={<AddContact handleAddContact={handleAddContact}/>}/>
 				</Routes>
       </main>
     </div>

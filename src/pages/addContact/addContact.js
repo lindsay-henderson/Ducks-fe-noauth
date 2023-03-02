@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 function AddContact(props) {
   const [formData, setFormData] = useState({
@@ -7,11 +7,26 @@ function AddContact(props) {
     social:'',
     notes: '',
   })
-  
+
+  const handleChange = evt => {
+		setFormData({ ...formData, [evt.target.name]: evt.target.value })
+	}
+
+  const [validForm, setValidForm] = useState(false)
+  const formElement = useRef()
+  const handleSubmit = evt => {
+		evt.preventDefault()
+    props.handleAddContact(formData)
+	}
+
+  useEffect(() => {
+		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+	}, [formData])
+
 	return (
 		<>
 			<h1>Add Contact</h1>
-			<form autoComplete="off">
+			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
 					<label htmlFor="name-input" className="form-label">
 						Name (required)
@@ -21,6 +36,8 @@ function AddContact(props) {
 						className="form-control"
 						id="name-input"
 						name="name"
+            value={formData.name}
+            onChange={handleChange}
 						required
 					/>
 				</div>
@@ -33,6 +50,8 @@ function AddContact(props) {
 						className="form-control"
 						id="email-input"
 						name="email"
+            value={formData.email}
+            onChange={handleChange}
 						required
 					/>
 				</div>
@@ -45,6 +64,8 @@ function AddContact(props) {
 						className="form-control"
 						id="social-input"
 						name="social"
+            value={formData.social}
+            onChange={handleChange}
 					/>
 				</div>
         <div className="form-group mb-4">
@@ -56,12 +77,15 @@ function AddContact(props) {
 						className="form-control"
 						id="notes-input"
 						name="notes"
+            value={formData.notes}
+            onChange={handleChange}
 					/>
 				</div>
 				<div className="d-grid">
 					<button
 						type="submit"
 						className="btn btn-primary btn-fluid"
+            disabled={!validForm}
 					>
 						Add Contact
 					</button>
