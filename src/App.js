@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
+import AddContact from './pages/addContact/addContact.js'
 import './App.css'
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
           <Link className='m-left' to='/add'>Add Contact</Link>
         </nav>
       </header>
-      <main>
-        
+			<main>
+				<Routes>
+          <Route path='/add'  element={<AddContact/>}/>
+				</Routes>
       </main>
     </div>
   )
