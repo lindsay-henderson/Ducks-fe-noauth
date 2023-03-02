@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
 
-function AddContact(props) {
+const AddContact = (props) => {
   const [formData, setFormData] = useState({
     name:'',
     email:'',
@@ -8,20 +8,27 @@ function AddContact(props) {
     notes: '',
   })
 
+  const [validForm, setValidForm] = useState(false)
+  
   const handleChange = evt => {
 		setFormData({ ...formData, [evt.target.name]: evt.target.value })
 	}
 
-  const [validForm, setValidForm] = useState(false)
+
+
+
+
   const formElement = useRef()
+  
+  useEffect(() => {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
+
   const handleSubmit = evt => {
 		evt.preventDefault()
     props.handleAddContact(formData)
 	}
 
-  useEffect(() => {
-		formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
-	}, [formData])
 
 	return (
 		<>
