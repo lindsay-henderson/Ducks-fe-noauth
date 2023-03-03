@@ -4,14 +4,14 @@ const AddOrder = (props) => {
   const [formData, setFormData] = useState({
     pet:'',
     client:'',
-    images:'',
+    photos:'',
     notes:'',
   })
 
   const [validForm, setValidForm] = useState(false)
   
   const handleChange = evt => {
-		setFormData({ ...formData, [evt.target.pet]: evt.target.value })
+		setFormData({ ...formData, [evt.target.order]: evt.target.value })
 	}
 
   const formElement = useRef()
@@ -22,7 +22,7 @@ const AddOrder = (props) => {
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-    props.handleAddContact(formData)
+    props.handleAddOrder(formData)
 	}
 
 
@@ -59,15 +59,15 @@ const AddOrder = (props) => {
 					/>
 				</div>
 				<div className="form-group mb-4">
-					<label htmlFor="images-input" className="form-label">
+					<label htmlFor="photos-input" className="form-label">
 						Image folder
 					</label>
 					<input 
 						type="text"
 						className="form-control"
-						id="images-input"
-						pet="images"
-            value={formData.images}
+						id="photos-input"
+						pet="photos"
+            value={formData.photos}
             onChange={handleChange}
 					/>
 				</div>

@@ -3,6 +3,7 @@ import { Route, Link, useNavigate, Routes } from 'react-router-dom'
 import AddContact from './pages/AddContact/AddContact.js'
 import ContactList from './pages/ContactList/ContactList'
 import AddOrder from './pages/AddOrder/AddOrder.js'
+import OrderList from './pages/OrderList/OrderList.js'
 import * as contactService from './services/contactService'
 import * as orderService from './services/orderService'
 
@@ -24,7 +25,7 @@ function App() {
     const newOrder = await orderService.create(newOrderData)
     setOrders([...orders, newOrder])
     // alert('order added')
-    navigate('/contacts')
+    navigate('/allorders')
   }
 
   useEffect(() => {
@@ -41,9 +42,10 @@ function App() {
       <header className="App-header">
         Ducks
         <nav>
+          <Link to='/allorders'>Orders</Link>
           <Link to='/addorder'>Add Order</Link> 
           <Link to='/contacts'>Contact List</Link>
-          <Link className='m-left' to='/addcontact'>Add Contact</Link>
+          <Link to='/addcontact'>Add Contact</Link>
         </nav>
       </header>
 			<main>
@@ -51,6 +53,7 @@ function App() {
           <Route path='/addorder' element={<AddOrder handleAddOrder={handleAddOrder}/>}/>
           <Route path='/addcontact'  element={<AddContact handleAddContact={handleAddContact}/>}/>
           <Route path='/contacts' element={<ContactList contacts={contacts}/>}/>
+          <Route path='/allorders' element={<OrderList orders={orders}/>}/>
         </Routes>
       </main>
     </div>

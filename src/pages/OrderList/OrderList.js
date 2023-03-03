@@ -5,11 +5,11 @@ function OrderList(props) {
     <>
       <h1>Order List</h1>
       <div className={styles.container}>
-        {props.contacts.map(order => (
+        {props.orders.map(order => (
           <div key={order._id}>
             <p>Order Name: {order.name}</p>
             <p>client: {order.client}</p>
-            <p>Image Folder: {order.images}</p>
+            <p>Image Folder: {order.photos}</p>
             <p>Notes <br/> {order.notes}</p>
           </div>
         ))}
