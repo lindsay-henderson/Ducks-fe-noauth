@@ -1,17 +1,17 @@
 import { useState, useRef, useEffect } from "react"
 
-const AddContact = (props) => {
+const AddOrder = (props) => {
   const [formData, setFormData] = useState({
-    name:'',
-    email:'',
-    social:'',
-    notes: '',
+    pet:'',
+    client:'',
+    images:'',
+    notes:'',
   })
 
   const [validForm, setValidForm] = useState(false)
   
   const handleChange = evt => {
-		setFormData({ ...formData, [evt.target.name]: evt.target.value })
+		setFormData({ ...formData, [evt.target.pet]: evt.target.value })
 	}
 
   const formElement = useRef()
@@ -28,46 +28,46 @@ const AddContact = (props) => {
 
 	return (
 		<>
-			<h1>Add Contact</h1>
+			<h1>Add Order</h1>
 			<form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
 				<div className="form-group mb-3">
-					<label htmlFor="name-input" className="form-label">
-						Name (required)
+					<label htmlFor="pet-input" className="form-label">
+						Pet Name/s (required)
 					</label>
 					<input 
 						type="text"
 						className="form-control"
-						id="name-input"
-						name="name"
-            value={formData.name}
+						id="pet-input"
+						pet="pet"
+            value={formData.pet}
             onChange={handleChange}
 						required
 					/>
 				</div>
 				<div className="form-group mb-3">
-					<label htmlFor="email-input" className="form-label">
-						Email (required)
+					<label htmlFor="client-input" className="form-label">
+						Client (required)
 					</label>
 					<input 
 						type="text"
 						className="form-control"
-						id="email-input"
-						name="email"
-            value={formData.email}
+						id="client-input"
+						pet="client"
+            value={formData.client}
             onChange={handleChange}
 						required
 					/>
 				</div>
 				<div className="form-group mb-4">
-					<label htmlFor="social-input" className="form-label">
-						Social Media
+					<label htmlFor="images-input" className="form-label">
+						Image folder
 					</label>
 					<input 
 						type="text"
 						className="form-control"
-						id="social-input"
-						name="social"
-            value={formData.social}
+						id="images-input"
+						pet="images"
+            value={formData.images}
             onChange={handleChange}
 					/>
 				</div>
@@ -79,7 +79,7 @@ const AddContact = (props) => {
 						type="text"
 						className="form-control"
 						id="notes-input"
-						name="notes"
+						pet="notes"
             value={formData.notes}
             onChange={handleChange}
 					/>
@@ -90,7 +90,7 @@ const AddContact = (props) => {
 						className="btn btn-primary btn-fluid"
             disabled={!validForm}
 					>
-						Add Contact
+						Add Order
 					</button>
 				</div>
 			</form>
@@ -98,4 +98,4 @@ const AddContact = (props) => {
 	)
 }
 
-export default AddContact
+export default AddOrder
