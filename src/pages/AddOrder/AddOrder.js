@@ -10,8 +10,8 @@ const AddOrder = (props) => {
 
   const [validForm, setValidForm] = useState(false)
   
-  const handleChange = evt => {
-		setFormData({ ...formData, [evt.target.order]: evt.target.value })
+	const handleChange = evt => {
+		setFormData({ ...formData, [evt.target.name]: evt.target.value })
 	}
 
   const formElement = useRef()
@@ -24,7 +24,6 @@ const AddOrder = (props) => {
 		evt.preventDefault()
     props.handleAddOrder(formData)
 	}
-
 
 	return (
 		<>
