@@ -4,6 +4,7 @@ import AddContact from './pages/AddContact/AddContact.js'
 import ContactList from './pages/ContactList/ContactList'
 import AddOrder from './pages/AddOrder/AddOrder.js'
 import * as contactService from './services/contactService'
+import * as orderService from './services/orderService'
 
 import './App.css'
 
