@@ -37,7 +37,7 @@ const AddOrder = (props) => {
 						type="text"
 						className="form-control"
 						id="pet-input"
-						pet="pet"
+						name="pet"
             value={formData.pet}
             onChange={handleChange}
 						required
@@ -51,7 +51,7 @@ const AddOrder = (props) => {
 						type="text"
 						className="form-control"
 						id="client-input"
-						pet="client"
+						name="client"
             value={formData.client}
             onChange={handleChange}
 						required
@@ -65,7 +65,7 @@ const AddOrder = (props) => {
 						type="text"
 						className="form-control"
 						id="photos-input"
-						pet="photos"
+						name="photos"
             value={formData.photos}
             onChange={handleChange}
 					/>
@@ -78,7 +78,7 @@ const AddOrder = (props) => {
 						type="text"
 						className="form-control"
 						id="notes-input"
-						pet="notes"
+						name="notes"
             value={formData.notes}
             onChange={handleChange}
 					/>
