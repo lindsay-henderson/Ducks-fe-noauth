@@ -1,33 +1,22 @@
 import { useState, useRef, useEffect}from "react"
 
 const AddOrder = (props) => {
-  const today = new Date()
+  const today = new Date().toDateString()
   const [formData, setFormData] = useState({
-    orderDate:today.toISOString().slice(0, 16),
-    dueDate:'',
+    orderDate:today,
+    dueDate:today,
     pet:'',
     client:'',
     photos:'',
     notes:'',
-    depositPaid:false,
-    paidInFull:false,
-    shipped:'',
+    depositPaid:today,
+    paidInFull:today,
+    shipped:today,
   })
 
   const [validForm, setValidForm] = useState(false)
 
-  const[depositChecked, setDepositChecked] = useState(false)
-  const[fullChecked, setFullChecked] = useState(false)
-  
-  const handlesetFullChecked = () =>{
-    setFullChecked(!fullChecked)
-  }
-
-  const handlesetDepositChecked = () =>{
-    setDepositChecked(!depositChecked)
-  }
-  
-	const handleChange = evt => {
+  const handleChange = evt => {
 		setFormData({ ...formData, [evt.target.name]: evt.target.value })
 	}
 
@@ -136,15 +125,13 @@ const AddOrder = (props) => {
 						Deposit Paid
 					</label>
 					<input 
-						type="checkbox"
+						type="date"
 						//className="form-control"
 						id="deposit"
 						name="deposit"
             value={formData.deposit}
-            checked={depositChecked}
-            onChange={handleChange && handlesetDepositChecked}
+            onChange={handleChange}
 					/>
-          <p>Is "My Value" checked? {depositChecked.toString()}</p>
         </div>
 
         <div className="form-group mb-3">
@@ -152,15 +139,13 @@ const AddOrder = (props) => {
 						Paid in Full
 					</label>
 					<input 
-						type="checkbox"
+						type="date"
 						//className="form-control"
 						id="paidInFull"
 						name="paidInFull"
             value={formData.paidInFull}
-            checked={fullChecked}
-            onChange={handleChange && handlesetFullChecked}
+            onChange={handleChange}
 					/>
-          <p>Is "My Value" checked? {fullChecked.toString()}</p>
         </div>
 
         <div className="form-group mb-3">
