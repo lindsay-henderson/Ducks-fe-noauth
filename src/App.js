@@ -11,8 +11,8 @@ import './App.css'
 
 function App() {
   const [contacts, setContacts] = useState([])
-  const navigate = useNavigate()
   const [orders, setOrders] = useState([])
+  const navigate = useNavigate()
 
   const handleAddContact = async newContactData => {
     const newContact = await contactService.create(newContactData)
@@ -24,6 +24,7 @@ function App() {
   const handleAddOrder = async newOrderData => {
     const newOrder = await orderService.create(newOrderData)
     setOrders([...orders, newOrder])
+    console.log('handlesubmit', newOrder)
     // alert('order added')
     navigate('/allorders')
   }

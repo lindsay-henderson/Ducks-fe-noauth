@@ -7,9 +7,9 @@ const AddContact = (props) => {
     social:'',
     notes: '',
   })
-
-  const [validForm, setValidForm] = useState(false)
   
+    const [validForm, setValidForm] = useState(false)
+    
   const handleChange = evt => {
 		setFormData({ ...formData, [evt.target.name]: evt.target.value })
 	}
