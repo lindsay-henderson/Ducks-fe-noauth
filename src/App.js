@@ -3,7 +3,7 @@ import { Route, Link, useNavigate, Routes } from 'react-router-dom'
 import AddContact from './pages/AddContact/AddContact.js'
 import ContactList from './pages/ContactList/ContactList'
 import AddOrder from './pages/AddOrder/AddOrder.js'
-import OrderList from './pages/OrderList/OrderList.js'
+import OrderList from './pages/OrderList/OrderList.jsx'
 import * as contactService from './services/contactService'
 import * as orderService from './services/orderService'
 

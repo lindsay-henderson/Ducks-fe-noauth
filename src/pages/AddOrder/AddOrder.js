@@ -63,6 +63,7 @@ const AddOrder = (props) => {
             value={formData.dueDate}
             onChange={handleChange}
 					/>
+          
         </div>
 
 				<div className="form-group mb-3">
@@ -127,9 +128,9 @@ const AddOrder = (props) => {
 					<input 
 						type="date"
 						//className="form-control"
-						id="deposit"
-						name="deposit"
-            value={formData.deposit}
+						id="depositPaid"
+						name="depositPaid"
+            value={formData.depositPaid}
             onChange={handleChange}
 					/>
         </div>
