@@ -15,6 +15,7 @@ async function getAll() {
   const res = await fetch(BASE_URL)
   return res.json()
 }
+
 export {
 	create,
   getAll

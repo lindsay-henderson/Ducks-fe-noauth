@@ -12,9 +12,11 @@ async function create(order) {
 }
 
 async function getAll() {
+  console.log("get'em")
   const res = await fetch(BASE_URL)
   return res.json()
 }
+
 export {
 	create,
   getAll

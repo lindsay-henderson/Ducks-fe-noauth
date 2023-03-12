@@ -5,7 +5,7 @@ import ContactList from './pages/ContactList/ContactList'
 import AddOrder from './pages/AddOrder/AddOrder.js'
 import OrderList from './pages/OrderList/OrderList.jsx'
 import * as contactService from './services/contactService'
-import * as orderService from './services/orderService'
+import * as orderService from './services/orderService.js'
 
 import './App.css'
 
@@ -34,7 +34,13 @@ function App() {
       const contactData = await contactService.getAll()
       setContacts(contactData)
     }
+    const fetchAllOrders = async () =>{
+      const orderData = await orderService.getAll()
+      setOrders(orderData)
+    }
+    
     fetchAllContacts()
+    fetchAllOrders()
   }, [])
 
 
